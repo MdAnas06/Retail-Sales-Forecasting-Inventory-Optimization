@@ -1,0 +1,21 @@
+Retail Sales Forecasting & Inventory Optimization - Summary
+
+1. Average Daily Demand: XX units
+2. Safety Stock: XX units
+3. Reorder Point: XX units
+
+Key Insights:
+- Sales show an increasing trend over time
+- Weekly patterns observed in demand
+- Forecast model performs with low error (MAE, RMSE)
+- Inventory drops below reorder point multiple times
+
+Business Impact:
+- Helps prevent stockouts
+- Reduces excess inventory
+- Improves supply chain efficiency
+
+Recommendations:
+- Monitor high-demand days
+- Adjust safety stock for seasonal peaks
+- Automate reorder triggers

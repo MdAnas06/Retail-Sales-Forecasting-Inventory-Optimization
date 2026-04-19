@@ -96,3 +96,35 @@ print("\nInventory plan saved successfully!")
 from src.inventory import plot_inventory
 
 plot_inventory(inventory_df, reorder_point)
+from src.preprocessing import preprocess_data, validate_data
+from src.eda import perform_eda, generate_insights
+from src.feature_engineering import create_features
+from src.forecasting import train_forecast_model
+from src.inventory import calculate_inventory_metrics, generate_inventory_plan, plot_inventory
+
+# Load & preprocess
+df = preprocess_data("data/raw/sales.csv")
+df = validate_data(df)
+
+# EDA
+df = perform_eda(df)
+generate_insights(df)
+
+# Feature engineering
+df = create_features(df)
+
+# Forecasting
+model, X_test, y_test, y_pred = train_forecast_model(df)
+
+# Inventory optimization
+avg_demand, safety_stock, reorder_point = calculate_inventory_metrics(df)
+inventory_df = generate_inventory_plan(df, reorder_point)
+
+# Save outputs
+df.to_csv("data/processed/feature_data.csv", index=False)
+inventory_df.to_csv("outputs/inventory_plan.csv", index=False)
+
+# Plot inventory
+plot_inventory(inventory_df, reorder_point)
+
+print("\n--- PIPELINE EXECUTED SUCCESSFULLY ---")
