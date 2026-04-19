@@ -82,3 +82,17 @@ output.to_csv("outputs/forecast_results.csv", index=False)
 print("\nForecast results saved successfully!")
 
 
+from src.inventory import calculate_inventory_metrics, generate_inventory_plan
+# Inventory calculations
+avg_demand, safety_stock, reorder_point = calculate_inventory_metrics(df)
+
+# Inventory planning
+inventory_df = generate_inventory_plan(df, reorder_point)
+
+# Save output
+inventory_df.to_csv("outputs/inventory_plan.csv", index=False)
+
+print("\nInventory plan saved successfully!")
+from src.inventory import plot_inventory
+
+plot_inventory(inventory_df, reorder_point)
